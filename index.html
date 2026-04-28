@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Pipeline Robot | GES R H Sapat College of Engineering</title>
+    <meta name="description" content="Official digital portfolio for the Industrial Pipeline Cleaning and Monitoring Robot. Featuring autonomous navigation, real-time streaming, and crack detection.">
+    <meta name="keywords" content="Pipeline Robotics, ESP32 Robot, Industrial Automation, Pipe Cleaning, Gokhale Education Society">
+    
+    <style>
+        :root {
+            --primary: #1a365d; /* Dark Navy */
+            --accent: #f6993f;  /* Industrial Orange */
+            --bg: #ffffff;
+            --section-bg: #f8fafc;
+            --text: #2d3748;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', system-ui, sans-serif; color: var(--text); line-height: 1.7; }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary); }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 1.5rem; }
+        nav ul li a { text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=2069');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 10%;
+        }
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; max-width: 800px; opacity: 0.9; margin-bottom: 2rem; }
+
+        /* General Sections */
+        section { padding: 100px 10%; }
+        .bg-gray { background-color: var(--section-bg); }
+        h2.section-title { font-size: 2.5rem; color: var(--primary); margin-bottom: 3rem; text-align: center; position: relative; }
+        h2.section-title::after { content: ''; display: block; width: 60px; height: 5px; background: var(--accent); margin: 15px auto; }
+        
+        /* Grid Layouts */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card h3 { color: var(--primary); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+
+        /* Specialized Sections */
+        .specs-list { list-style: none; margin-top: 1rem; }
+        .specs-list li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+        .specs-list li::before { content: '✓'; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+
+        .table-wrap { overflow-x: auto; margin-top: 2rem; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: var(--primary); color: white; }
+
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .team-member { text-align: center; padding: 1.5rem; background: var(--section-bg); border-radius: 10px; border: 1px solid #e2e8f0; }
+        .team-member h4 { color: var(--primary); }
+
+        footer { background: var(--primary); color: white; padding: 3rem 10%; text-align: center; }
+        .footer-logo { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PipeBot Portfolio</div>
+        <ul>
+            <li><a href="#about">Introduction</a></li>
+            <li><a href="#objectives">Objectives</a></li>
+            <li><a href="#tech">Solution</a></li>
+            <li><a href="#scope">Future Scope</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Industrial Pipeline Cleaning & Monitoring Robot</h1>
+        <p>Enhancing infrastructural safety through autonomous navigation and real-time diagnostic intelligence[cite: 26, 27].</p>
+        <a href="#about" style="background: var(--accent); padding: 15px 30px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">View Details</a>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">Concept & Challenges</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Introduction</h3>
+                <p>Industrial pipelines are the critical arteries of modern infrastructure, carrying water, oil, chemicals, and data[cite: 24]. Their integrity is non-negotiable for safety, efficiency, and environmental protection[cite: 25]. This project introduces an autonomous robot designed to navigate, clean, and monitor pipelines in real-time[cite: 26].</p>
+            </div>
+            <div class="card">
+                <h3>Problem Statement</h3>
+                <p>Conventional pipe cleaning methods are labor-intensive, time-consuming, and often pose risks to human workers[cite: 25, 28]. Blockages, sediment buildup, and undetected damages like cracks or leaks reduce efficiency and can lead to catastrophic failures[cite: 29, 30].</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="objectives" class="bg-gray">
+        <h2 class="section-title">Core Objectives</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Internal Cleaning</h3>
+                <p>Development of a motorized rotating brush and scrubber mechanism specifically designed for internal pipe debris removal[cite: 33].</p>
+            </div>
+            <div class="card">
+                <h3>Wireless Control</h3>
+                <p>Implementation of an ESP32-based control system allowing for seamless wireless (Bluetooth) operation via mobile devices[cite: 34].</p>
+            </div>
+            <div class="card">
+                <h3>Live Monitoring</h3>
+                <p>Integration of a Wi-Fi camera for high-definition, real-time video streaming to assist in navigation and inspection[cite: 35].</p>
+            </div>
+            <div class="card">
+                <h3>Damage Detection</h3>
+                <p>Utilization of ultrasonic sensors to detect structural anomalies, including pipe damage or surface cracks[cite: 36].</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tech">
+        <h2 class="section-title">Solution & Methodology</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Hardware Stack</h3>
+                <ul class="specs-list">
+                    <li>ESP32 Controller & L298N Motor Driver [cite: 72, 73]</li>
+                    <li>DC Gear Motors & Servo Motors [cite: 74, 75]</li>
+                    <li>Ultrasonic, IR, and Gas Sensors [cite: 76]</li>
+                    <li>12V Li-ion Battery Pack [cite: 78]</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Methodology</h3>
+                <p>The robot uses a modular design to adapt to various pipe diameters[cite: 37]. The system flow follows a 5V power supply feeding into the ESP32, which controls the motor drivers and relays to engage the cleaning brush while simultaneously processing sensor data for feedback[cite: 70].</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray">
+        <h2 class="section-title">Budget & Achievements</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Achievements</h3>
+                <p>Successfully prototyped an integrated system combining mechanical cleaning with wireless data transmission. The project achieves live visual feedback and automated obstacle/damage sensing, significantly reducing the cost of industrial maintenance[cite: 26, 88].</p>
+            </div>
+            <div class="card">
+                <h3>Project Economics</h3>
+                <div class="table-wrap">
+                    <table>
+                        <tr><th>Component</th><th>Price (₹)</th></tr>
+                        <tr><td>ESP32 Dev Board</td><td>500 [cite: 97]</td></tr>
+                        <tr><td>ESP32-CAM (Wi-Fi)</td><td>550 [cite: 113]</td></tr>
+                        <tr><td>Battery Pack (12V)</td><td>1200 [cite: 117]</td></tr>
+                        <tr><td>Total Estimated Cost</td><td><strong>6240 [cite: 139]</strong></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scope">
+        <h2 class="section-title">Future Scope</h2>
+        <div class="grid">
+            <div class="card">
+                <p>Future development will focus on integrating Artificial Intelligence (AI) for automated crack recognition and using Magnetic Flux Leakage (MFL) sensors for metal thickness analysis[cite: 142, 148]. We also plan to implement LiDAR for 3D mapping of the pipe interior[cite: 142].</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="bg-gray">
+        <h2 class="section-title">Team Details</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <h4>Katad Mann Vinod</h4>
+                <p>Lead Developer [cite: 2]</p>
+            </div>
+            <div class="team-member">
+                <h4>Agale Rohit Ramdas</h4>
+                <p>System Designer [cite: 3]</p>
+            </div>
+            <div class="team-member">
+                <h4>Bobade Vrushabh P.</h4>
+                <p>Mechanical Head [cite: 4]</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <p><strong>Under the Supervision of:</strong> Dr. Sunil Nyati [cite: 10]</p>
+            <p><strong>Institute:</strong> R H Sapat College of Engineering, Nashik [cite: 5]</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">Gokhale Education Society</div>
+        <p>Centenary Celebrations: Above Self... Above Politics [cite: 4]</p>
+        <p style="margin-top: 1rem; opacity: 0.6; font-size: 0.8rem;">© 2026 Academic Project Portfolio - Digital Business Management</p>
+    </footer>
+
+</body>
+</html>
