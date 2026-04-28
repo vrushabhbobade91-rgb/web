@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pipeline Robot Portfolio</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --sidebar: #1a1a1a;
+            --accent: #ffc107;
+            --border: #000000;
+            --card-bg: #fdfdfd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { display: flex; background: var(--bg); }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 260px;
+            background: var(--sidebar);
+            color: white;
+            padding: 40px 25px;
+            position: fixed;
+            height: 100vh;
+            border-right: 5px solid var(--border);
+        }
+        .nav-logo { font-size: 22px; font-weight: 800; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 40px; }
+        nav ul { list-style: none; }
+        nav ul li { margin-bottom: 20px; }
+        nav ul li a { color: #888; text-decoration: none; font-size: 14px; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent); padding-left: 10px; }
+
+        /* Main Body */
+        main { margin-left: 260px; width: 100%; padding: 60px; }
+        
+        .section-header { margin-bottom: 40px; }
+        .section-header h1 { font-size: 48px; text-transform: uppercase; letter-spacing: -1px; }
+
+        /* Creative Square Grid System */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 20px;
+        }
+
+        .square-block {
+            border: 3px solid var(--border);
+            padding: 25px;
+            background: var(--card-bg);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .square-block:hover { transform: translate(-5px, -5px); box-shadow: 8px 8px 0px var(--border); }
+
+        /* Sizing modifiers */
+        .large { grid-column: span 2; grid-row: span 2; }
+        .tall { grid-row: span 2; }
+        .wide { grid-column: span 2; }
+
+        h2 { font-size: 20px; text-transform: uppercase; margin-bottom: 15px; background: var(--accent); display: inline-block; padding: 2px 8px; border: 2px solid var(--border); }
+        p { font-size: 15px; color: #444; line-height: 1.6; }
+        
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: #eee;
+            border: 2px solid var(--border);
+            object-fit: cover;
+        }
+
+        /* Table Block */
+        .table-block { grid-column: span 3; border: 3px solid var(--border); padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 2px solid var(--border); padding: 12px; text-align: left; }
+        th { background: #f0f0f0; }
+
+        @media (max-width: 1000px) { .bento-grid { grid-template-columns: 1fr; } .large, .tall, .wide, .table-block { grid-column: span 1; } }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="nav-logo">REWALL ROBOTICS</div>
+        <nav>
+            <ul>
+                <li><a href="#home">01. Overview</a></li>
+                <li><a href="#tech">02. Technicals</a></li>
+                <li><a href="#status">03. Project Status</a></li>
+                <li><a href="#team">04. The Team</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="home">
+        <div class="section-header">
+            <h1>Industrial <span style="color:var(--accent)">Pipeline</span> Robot</h1>
+        </div>
+
+        <div class="bento-grid">
+            
+            <div class="square-block large">
+                <h2>The Vision</h2>
+                <img src="robot-hero.jpg" alt="AI Image: Futuristic pipeline robot" class="img-placeholder">
+                <p style="margin-top:15px;">Autonomous navigation and cleaning system for high-risk industrial infrastructure.</p>
+            </div>
+
+            <div class="square-block tall">
+                <h2>The Problem</h2>
+                <p>Traditional inspection methods are labor-intensive, costly, and pose risks to human workers. Sediment buildup and cracks lead to environmental disasters.</p>
+                <img src="pipe-damage.jpg" alt="AI Image: Corroded industrial pipe" class="img-placeholder" style="height:150px; margin-top:20px;">
+            </div>
+
+            <div class="square-block">
+                <h2>Objectives</h2>
+                <p>• Motorized Scrubbing<br>• ESP32 Intelligence<br>• Wireless Monitoring</p>
+            </div>
+
+            <div class="square-block wide">
+                <h2>System Solution</h2>
+                <p>Integrating ESP32 Controllers with L298N drivers for precise torque. Real-time feedback via Wi-Fi CAM.</p>
+            </div>
+
+            <div class="square-block large">
+                <h2>Block Diagram</h2>
+                <img src="diagram.png" alt="Project Architecture Diagram" class="img-placeholder">
+            </div>
+
+            <div class="table-block">
+                <h2>Budget Allocation</h2>
+                <table>
+                    <tr><th>Module</th><th>Component</th><th>Cost (₹)</th></tr>
+                    <tr><td>Processing</td><td>ESP32 Dev Board + Camera</td><td>₹1,050</td></tr>
+                    <tr><td>Motion</td><td>Gear Motors & Driver</td><td>₹1,030</td></tr>
+                    <tr><td>Energy</td><td>12V Li-ion Battery</td><td>₹1,200</td></tr>
+                    <tr><td>Structure</td><td>Chassis & 3D Parts</td><td>₹2,000</td></tr>
+                    <tr><td><b>Total</b></td><td><b>Project Budget</b></td><td><b>₹6,240</b></td></tr>
+                </table>
+            </div>
+
+            <div class="square-block wide">
+                <h2>The Development Team</h2>
+                <p><b>Katad Mann Vinod</b> | <b>Agale Rohit Ramdas</b> | <b>Bobade Vrushabh P.</b></p>
+                <p style="font-size: 12px; margin-top:10px;">Guided by Dr. Sunil Nyati @ R H Sapat College</p>
+            </div>
+
+            <div class="square-block">
+                <h2>Future</h2>
+                <p>AI-driven crack detection and adaptive chassis for variable diameters.</p>
+            </div>
+
+        </div>
+
+        <footer style="margin-top: 40px; font-size: 12px; opacity: 0.6;">
+            © 2026 Gokhale Education Society's Centenary Celebration Portfolio.
+        </footer>
+    </main>
+
+</body>
+</html>
